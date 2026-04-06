@@ -26,43 +26,44 @@ setInterval(()=>{
     heart.style.left=Math.random()*100+"%";
     document.body.appendChild(heart);
     setTimeout(()=>heart.remove(),5000);
-},400);
+},500);
 
-// YES CLICK 💖
+// YES CLICK
 yesBtn.onclick = () => {
-    if(step < 1){
+    if(step === 0){
         step=1;
         showStep(1);
-        sticker.src="stickers/first.gif";
+        sticker.src="stickers/Ask.gif";
     } else {
         showStep(4);
-        sticker.src="stickers/Final.jpg";
+        sticker.src="stickers/Love.jpg";
         yesBtn.style.display="none";
         noBtn.style.display="none";
     }
 };
 
-// NO CLICK 😈
+// NO CLICK FLOW
 noBtn.onclick = () => {
     if(step === 1){
         step=2;
         showStep(2);
-        sticker.src="stickers/second.jpg";
+        sticker.src="stickers/Think.jpg";
     }
     else if(step === 2){
         step=3;
         showStep(3);
-        sticker.src="stickers/third.jpg";
-        prankMode=true; // prank activated 😈
+        sticker.src="stickers/Angry.jpg";
+        prankMode=true;
     }
 };
 
-// NO button runs crazy after step 3 😆
-noBtn.addEventListener("mouseover",()=>{
-    if(prankMode){
-        const x=Math.random()*700-350;
-        const y=Math.random()*500-250;
-        noBtn.style.transform=`translate(${x}px,${y}px)`;
-        yesBtn.style.fontSize=(parseInt(getComputedStyle(yesBtn).fontSize)+3)+"px";
-    }
-});
+// PRANK MODE (works on mobile tap + hover)
+function moveNoButton(){
+    const x = Math.random()*250 - 125;
+    const y = Math.random()*200 - 100;
+    noBtn.style.transform=`translate(${x}px,${y}px)`;
+    yesBtn.style.transform="scale(1.1)";
+}
+
+noBtn.addEventListener("mouseover",()=>{ if(prankMode) moveNoButton(); });
+noBtn.addEventListener("touchstart",()=>{ if(prankMode) moveNoButton(); });

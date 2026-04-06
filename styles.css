@@ -1,40 +1,72 @@
+*{ box-sizing:border-box; }
+
 body{
     margin:0;
     font-family:"Comic Sans MS", cursive;
     background: linear-gradient(45deg,#ff9ad5,#ffd6ec,#ffc2f2);
-    height:100vh;
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     overflow:hidden;
 }
 
+/* MAIN CARD */
 .container{
     text-align:center;
     background:white;
-    padding:45px;
-    border-radius:30px;
+    padding:30px 20px;
+    border-radius:25px;
     box-shadow:0 0 25px rgba(0,0,0,0.2);
+    width:90%;
+    max-width:420px;
 }
 
-.sticker{ width:170px; }
+/* STICKER */
+.sticker{
+    width:160px;
+    max-width:70%;
+}
 
-h1{ color:#ff4da6; }
+/* TEXT */
+h1{
+    color:#ff4da6;
+    font-size:26px;
+    margin:15px 0;
+}
+
+.subtext{
+    color:#888;
+    margin-top:-10px;
+    font-size:16px;
+}
 
 .hide{ display:none; }
 
+/* BUTTONS */
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
 button{
-    padding:13px 28px;
+    padding:14px 28px;
     font-size:18px;
     border:none;
     border-radius:25px;
     cursor:pointer;
-    margin:10px;
+    transition:0.3s;
 }
 
 #yesBtn{ background:#ff4da6; color:white; }
 #noBtn{ background:#ddd; }
 
+button:active{ transform:scale(0.95); }
+
+/* floating hearts */
 .heart{
     position:absolute;
     font-size:22px;
@@ -44,4 +76,11 @@ button{
 @keyframes float{
     from{ transform:translateY(0); opacity:1; }
     to{ transform:translateY(-700px); opacity:0; }
+}
+
+/* 📱 SMALL MOBILE */
+@media(max-width:480px){
+    h1{ font-size:22px; }
+    .sticker{ width:140px; }
+    button{ font-size:16px; padding:12px 22px; }
 }
